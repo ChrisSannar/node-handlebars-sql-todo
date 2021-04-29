@@ -2,6 +2,8 @@ console.log("WOOT")
 const express = require("express");
 const expressHandlebars = require("express-handlebars");
 
+const seq = require("./config/connection");
+
 const app = express();
 const PORT = 3000;
 
@@ -12,6 +14,8 @@ app.get("/", (req, res) => {
     res.render("index")
 })
 
-app.listen(PORT, () => {
-    console.log("Server is running", PORT)
+seq.sync({force: true}).then(() => {
+    app.listen(PORT, () => {
+        console.log("Server is running", PORT)
+    })
 })
