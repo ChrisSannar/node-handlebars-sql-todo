@@ -11,7 +11,7 @@ app.set('view engine', 'handlebars');
 
 const routes = require("./routes");
 
-app.use(routes)
+app.use(routes);
 
 seq.sync({force: true}).then(() => {
     app.listen(PORT, () => {
